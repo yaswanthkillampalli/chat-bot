@@ -121,7 +121,7 @@ function App() {
               <div
                 className="p-2 rounded shadow-sm bg-white text-dark border"
                 style={{ maxWidth: '75%' }}
-              >
+              > 
                 <div className="loading-dots">                  
                   <span></span>
                   <span></span>
