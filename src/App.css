@@ -1,0 +1,32 @@
+/* Chat-specific styles */
+.chatResults {
+  scroll-behavior: smooth;
+}
+
+.typingBarSettings {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.heightSeter {
+  min-height: 20px;
+  max-height: 400px;
+}
+
+.inputSettings {
+  transition: all 0.2s ease;
+}
+
+.inputSettings:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.sendButton {
+  transition: background-color 0.2s ease;
+}
+
+.sendFont {
+  font-size: 16px;
+}
