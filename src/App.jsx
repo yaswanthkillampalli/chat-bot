@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import botLogo from '../public/bot.jpeg'; // Import bot logo
+import userLogo from '../public/user.png'; // Import user logo
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -102,27 +104,49 @@ function App() {
               key={message.id} // Unique ID for each message
               className={`d-flex mb-3 ${
                 message.sender === 'user' ? 'justify-content-end' : 'justify-content-start'
-              }`}
+              } align-items-center`} // Added align-items-center for vertical alignment
             >
+              {message.sender === 'bot' && (
+                <img
+                  src={botLogo} // Path to bot logo (adjust as needed)
+                  alt="Bot Logo"
+                  className="me-2"
+                  style={{ width: '30px', height: '30px' }} // Logo size
+                />
+              )}
               <div
                 className={`p-2 rounded shadow-sm ${
                   message.sender === 'user'
-                    ? 'bg-primary text-white'
-                    : 'bg-white text-dark border'
+                    ? 'user-message'
+                    : 'bot-message'
                 }`}
-                style={{ maxWidth: '75%' }}
+                style={{ maxWidth: '70%' }} // Adjusted maxWidth to accommodate logo
               >
                 {message.sender === 'user' ? message.text : message.content}
               </div>
+              {message.sender === 'user' && (
+                <img
+                  src={userLogo} // Path to user logo (adjust as needed)
+                  alt="User Logo"
+                  className="ms-2"
+                  style={{ width: '30px', height: '30px' }} // Logo size
+                />
+              )}
             </div>
           ))}
           {isBotTyping && (
-            <div className="d-flex mb-3 justify-content-start">
+            <div className="d-flex mb-3 justify-content-start align-items-center">
+              <img
+                src={botLogo} // Bot logo for typing indicator
+                alt="Bot Logo"
+                className="me-2"
+                style={{ width: '30px', height: '30px' }}
+              />
               <div
                 className="p-2 rounded shadow-sm bg-white text-dark border"
-                style={{ maxWidth: '75%' }}
-              > 
-                <div className="loading-dots">                  
+                style={{ maxWidth: '70%' }}
+              >
+                <div className="loading-dots">...
                   <span></span>
                   <span></span>
                   <span></span>
@@ -132,7 +156,7 @@ function App() {
           )}
         </div>
         <div className="typingBarSettings bg-white border-top">
-          <div className="container py-2"> {/* Reduced padding to minimize height */}
+          <div className="container py-2">
             <div className="d-flex align-items-center">
               <select
                 className="form-select me-2"
@@ -140,7 +164,7 @@ function App() {
                 value={selectedQuestion}
                 onChange={(e) => setSelectedQuestion(e.target.value)}
                 onKeyDown={handleKeyPress}
-                style={{ maxHeight: '38px' }} // Minimize height
+                style={{ maxHeight: '38px' }}
               >
                 <option value="">
                   Select a question...
@@ -155,7 +179,7 @@ function App() {
                 id="sendButton"
                 className="sendButton btn btn-primary"
                 onClick={handleSend}
-                style={{ maxHeight: '38px' }} // Match dropdown height
+                style={{ maxHeight: '38px' }}
               >
                 <i className="fa-solid fa-paper-plane sendFont"></i>
               </button>
