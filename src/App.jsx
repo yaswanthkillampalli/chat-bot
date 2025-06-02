@@ -131,7 +131,6 @@ function App() {
             </div>
           )}
         </div>
-
         <div className="typingBarSettings bg-white border-top">
           <div className="container py-2"> {/* Reduced padding to minimize height */}
             <div className="d-flex align-items-center">
